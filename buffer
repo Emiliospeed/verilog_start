@@ -1,0 +1,62 @@
+
+#all commands can be compiled in .v or .vpp
+
+
+
+module buffer ( a, b);
+
+
+input a;
+input b;
+
+
+
+assign b = a;
+    
+endmodule
+
+
+
+
+
+//////////
+buffer_tb
+
+`timescale 1ns / 1ns
+`include "buffer.v"
+
+module buffer_tb;
+
+
+reg a;
+reg b;
+
+buffer uut(a, b);
+
+inital begin
+    
+
+    $dumpfile("buffer_tb.vcd");
+    $dumpvars(0, buffer_tb);
+
+
+    a = 0;
+    #20;
+
+
+    a = 1;
+    #20;
+
+
+    a = 0;
+    #20;
+
+
+    $display("test completed");
+
+    
+
+
+
+end
+
